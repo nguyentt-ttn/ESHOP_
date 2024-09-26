@@ -1,0 +1,29 @@
+<div class="row justify-content-center">
+  <div class="col-md-6">
+    @if(product){
+      <div class="product-card">
+          <img [src]="product.image" alt="Product Image" class="img-fluid">
+          <div class="product-info">
+              <h6 class="text-uppercase text-muted">Product detail</h6>
+              <h2>{{product.title}}k</h2>
+              <p class="product-price">${{product.price}}</p>
+              <p>{{product.description}}</p>
+              <dl class="product-details">
+                  <dt>Fit:</dt>
+                  <dd>Perfect</dd>
+                  <dt>Length:</dt>
+                  <dd>Runs long</dd>
+                  <dt>Comfort:</dt>
+                  <dd>Comfortable</dd>
+                  <dt>Quality:</dt>
+                  <dd>Regular</dd>
+              </dl>
+              <div class="d-flex justify-content-between align-items-center">
+                  <div class="mt-3">
+                      <button class="btn btn-primary">Mua Ngay</button>
+                  </div>
+              </div>
+          </div>
+      </div>}
+  </div>
+</div>

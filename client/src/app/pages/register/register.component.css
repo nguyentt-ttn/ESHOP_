@@ -1,0 +1,56 @@
+.formAuth {
+    display: flex;
+    min-height: 70vh;
+    align-items: center;
+    justify-content: center;
+    font-family: Arial, sans-serif;
+    background-color: #f7f7f7;
+    padding: 20px;
+    }
+    .signup-container {
+    display: flex;
+    width: 80%;
+    max-width: 950px;
+    background-color: #fff;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    border-radius: 10px;
+    }
+    .signup-form {
+    padding: 40px;
+    width: 50%;
+    }
+    .signup-form h2 {
+    margin-bottom: 20px;
+    font-weight: bold;
+    }
+    .signup-form input[type="email"], .signup-form input[type="password"], .signup-form input[type="text"] {
+    margin-bottom: 10px;
+    }
+    .signup-form .btn-signup {
+    background-color: #4caf50;
+    color: #fff;
+    }
+    .signup-image {
+    width: 50%;
+    background-image: url('https://data.dghome3d.com/blogs/b83fqWKeQ7/pictures/556d6d6745456458546f4c39535a46476e2d716f54.jpg');
+    background-size: cover;
+    background-position: center;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    }
+    .social-login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    }
+    .social-login img {
+    width: 40px;
+    height: 40px;
+    margin: 0 10px;
+    cursor: pointer;
+    }
+    .signin-link {
+    text-align: center;
+    margin-top: 20px;
+    }

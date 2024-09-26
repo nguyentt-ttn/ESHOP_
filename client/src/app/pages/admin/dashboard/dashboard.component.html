@@ -1,0 +1,29 @@
+<div class="col dashboard-content">
+    <div class="table-responsive">
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Image</th>
+                    <th>Price</th>
+                    <th>Description</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for(product of products; track product._id) {
+                    <tr>
+                        <td>{{ product.title }}</td>
+                        <td><img [src]="product.image" alt="image product" style="width: 170px;"></td>
+                        <td>{{ product.price }}</td>
+                        <td>{{ product.description }}</td>
+                        <td>
+                            <button class="btn btn-danger" (click)="handleDeleteProduct(product._id)">Delete</button> | 
+                            <button class="btn btn-primary">Update</button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
