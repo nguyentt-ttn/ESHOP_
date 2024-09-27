@@ -29,14 +29,13 @@ export class DashboardComponent {
   }
 
   handleDeleteProduct(id: string) {
-    const token = localStorage.getItem('token');
-    if (!token) {
-      this.toast.error('Bạn cần đăng nhập để thực hiện thao tác này!');
-      this.router.navigate(['/login']); 
-      return;
-    }
+    // const token = localStorage.getItem('token');
+    // if (!token) {
+    //   this.toast.error('Bạn cần đăng nhập để thực hiện thao tác này!');
+    //   this.router.navigate(['/login']); 
+    //   return;
+    // }
   
-    // Nếu có token, tiếp tục xóa sản phẩm
     if (window.confirm('Bạn có chắc muốn xóa không?')) {
       this.productService.deleteProduct(id).subscribe({
         next: () => {

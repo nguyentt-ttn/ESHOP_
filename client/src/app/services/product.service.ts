@@ -27,7 +27,6 @@ export class ProductService {
   http = inject(HttpClient);
   getAllProducts() {
     console.log(this.headers);
-
     return this.http.get<Product[]>(this.apiUrl);
   }
   // getAll(): Observable<ApiResponse> {
