@@ -1,10 +1,10 @@
 
 
-.sidebar {
+/* .sidebar {
     background-color: #fff;
     height: 100vh;
     padding: 20px;
-}
+} */
 
 .sidebar .nav-link {
     color: #333;
@@ -18,7 +18,14 @@
 img{
     padding: 5px;
     border-radius: 100%;
-    margin-left: 15%;
+    margin-left: 25%;
     width: 119px;
     margin-bottom: 10px;
 }
+.sidebar {
+    width: 250px; /* Điều chỉnh kích thước sidebar */
+    background-color: #f8f9fa;
+    position: fixed; /* Giữ cố định sidebar */
+    height: 100vh; /* Chiều cao toàn màn hình */
+    overflow-y: auto; /* Thêm scroll nếu nội dung vượt quá */
+  }

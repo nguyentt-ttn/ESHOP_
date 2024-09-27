@@ -3,7 +3,7 @@
     <div class="signup-form">
       <h2>Get Started Now</h2>
       <form [formGroup]="registerForm" (ngSubmit)="handleSubmit()">
-        <div class="form-group">
+        <div class="form-group mb-3">
           <label for="ussername">Username:</label>
           <input
             type="text"
@@ -26,7 +26,7 @@
           </div>
           }
         </div>
-        <div class="form-group">
+        <div class="form-group mb-3">
           <label for="email">Email: </label>
           <input
             type="email"
@@ -49,7 +49,7 @@
           </div>
           }
         </div>
-        <div class="form-group">
+        <div class="form-group mb-3">
           <label for="password">Password</label>
           <input
             type="password"
@@ -72,7 +72,7 @@
           </div>
           }
         </div>
-        <div class="form-group form-check">
+        <div class="form-group form-check mb-3">
           <input type="checkbox" class="form-check-input" id="terms" />
           <label class="form-check-label" for="terms"
             >I agree to the <a href="#">terms & policy</a></label
@@ -81,7 +81,7 @@
         <button
           type="submit"
           [disabled]="registerForm.invalid"
-          class="btn btn-signup btn-block"
+          class="btn btn-signup btn-block w-100"
         >
           Register
         </button>

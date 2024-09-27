@@ -15,6 +15,14 @@ export type Product = {
 //   message: string;
 //   data: Product[];
 // }
+export type ProductForm = {
+  title: string;
+  price: number;
+  description: string;
+  category: string;
+  image: string;
+  isShow: boolean;
+};
 
 @Injectable({
   providedIn: 'root',
@@ -35,7 +43,9 @@ export class ProductService {
   getProductDetail(id: String) {
     return this.http.get<Product>(`${this.apiUrl}/${id}`);
   }
-  
+  createProduct(data: ProductForm) {
+    return this.http.post(this.apiUrl, data);
+  }
   deleteProduct(id: string) {
     const token = localStorage.getItem('token'); 
     const headers = new HttpHeaders({

@@ -16,15 +16,15 @@ export class AuthGuard implements CanActivate {
     const token = localStorage.getItem('token');
     const userRole = this.authService.getUserRole();
   
-    console.log('Token:', token); // Xem token
-    console.log('User Role:', userRole); // Xem vai trò
+    console.log('Token:', token); 
+    console.log('User Role:', userRole); 
   
     if (token && userRole === 'admin') {
-      return true; // Cho phép truy cập
+      return true; 
     }
     this.toast.error('bạn không quyền truy cập vào trang này');
-    this.router.navigate(['/login']); // Điều hướng nếu không có quyền
-    return false; // Ngăn không cho truy cập
+    this.router.navigate(['/login']); 
+    return false;
   }
   
 }
