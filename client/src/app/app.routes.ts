@@ -9,11 +9,15 @@ import { AdminComponent } from './layouts/admin/admin.component';
 import { DashboardComponent } from './pages/admin/dashboard/dashboard.component';
 import { AuthGuard } from './auth.guard';
 import { CreateComponent } from './pages/admin/products/create/create.component';
+import { EditComponent } from './pages/admin/products/edit/edit.component';
+import { BidsComponent } from './pages/admin/products/bids/bids.component';
 
 export const routes: Routes = [
   {path:'admin', component: AdminComponent,canActivate: [AuthGuard],children:[
     { path: '', component: DashboardComponent },
     { path: 'products/create', component: CreateComponent},
+    { path: 'products/edit/:id', component: EditComponent},
+    { path: 'products/:id/bids', component: BidsComponent},
   ]},
   {
     path: '',

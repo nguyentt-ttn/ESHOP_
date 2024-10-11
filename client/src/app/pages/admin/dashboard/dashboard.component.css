@@ -2,9 +2,9 @@
   padding: 20px;
 }
 .dashboard-content {
-  margin-left: 250px; /* Đẩy nội dung chính sang phải sau khi chỉnh sidebar */
+  margin-left: 250px; 
 }
 
 .table-responsive {
-  margin-top: 20px; /* Tạo khoảng cách giữa bảng và phần trên */
+  margin-top: 20px; 
 }

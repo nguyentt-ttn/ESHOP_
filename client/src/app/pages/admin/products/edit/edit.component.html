@@ -1,0 +1,122 @@
+<div class="formAddProduct">
+  <h2>Update Product</h2>
+<form  [formGroup]="editProductForm" (ngSubmit)="handleUpdateProduct()">
+  <div class="mb-3">
+    <label for="title" class="form-label">Title</label>
+    <input
+      type="text"
+      class="form-control"
+      id="title"
+      formControlName="title"
+    />
+    @if(title?.invalid && title?.touched) {
+      <div>
+        @if(title?.hasError('required')) {
+        <small id="titleHelp" class="text-danger">
+          Title là trường bắt buộc
+        </small>
+        } @if(title?.hasError('minlength')) {
+        <small id="titleHelp" class="text-danger">
+          Title tối thiểu 4 ký tự
+        </small>
+        }
+      </div>
+      }
+  </div>
+  <div class="mb-3">
+    <label for="image" class="form-label">Image</label>
+    <input
+      type="text"
+      class="form-control"
+      id="image"
+      formControlName="image"
+    />
+    @if(image?.invalid && image?.touched) {
+      <div>
+        @if(image?.hasError('required')) {
+        <small  class="text-danger">
+          image là trường bắt buộc
+        </small>
+        }
+      </div>
+      }
+  </div>
+  <div class="mb-3">
+    <label for="price" class="form-label">Price</label>
+    <input
+      type="number"
+      class="form-control"
+      id="price"
+      formControlName="price"
+    />
+    @if(price?.invalid && price?.touched) {
+      <div>
+        @if(price?.hasError('required')) {
+        <small class="text-danger">
+          Price là trường bắt buộc
+        </small>
+        } @if(price?.hasError('min')) {
+        <small class="text-danger">
+          Price tối lon hon 0 
+        </small>
+        }
+      </div>
+      }
+  </div>
+  <div class="mb-3">
+    <label for="description" class="form-label">Description</label>
+    <textarea
+      class="form-control"
+      id="description"
+      rows="3"
+      formControlName="description"
+    ></textarea>
+    @if(description?.invalid && description?.touched) {
+      <div>
+        @if(description?.hasError('required')) {
+        <small class="text-danger">
+          description là trường bắt buộc
+        </small>
+        }
+      </div>
+      }
+  </div>
+  <div class="mb-3">
+    <label for="category" class="form-label">Category</label>
+    <select class="form-control" id="category" formControlName="category">
+      <option value="">Select Category</option>
+      @for (category of categories; track category._id) {
+      <option value="{{ category._id }}">{{ category.title }}</option>
+      }
+    </select>
+    @if(category?.invalid && category?.touched) {
+      <div>
+        @if(category?.hasError('required')) {
+        <small  class="text-danger">
+          category là trường bắt buộc
+        </small>
+        }
+      </div>
+      }
+  </div>
+  <div class="mb-3">
+    <label for="startAt" class="form-label">Start At</label>
+    <input
+      type="datetime-local"
+      class="form-control"
+      id="startAt"
+      formControlName="startAt"
+    />
+  </div>
+  <div class="mb-3">
+    <label for="times" class="form-label">Select Times</label>
+    <select class="form-control" id="times" formControlName="bidTime">
+      <option value="">Select Time</option>
+      <option value="2">2p</option>
+      <option value="15">15p</option>
+      <option value="30">30p</option>
+      <option value="60">1h</option>
+    </select>
+  </div>
+  <button type="submit" [disabled]="editProductForm.invalid"  class="btn btn-primary">Update Product</button>
+</form></div>

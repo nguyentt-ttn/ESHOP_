@@ -1,29 +1,72 @@
-<div class="row justify-content-center">
-  <div class="col-md-6">
-    @if(product){
-      <div class="product-card">
-          <img [src]="product.image" alt="Product Image" class="img-fluid">
-          <div class="product-info">
-              <h6 class="text-uppercase text-muted">Product detail</h6>
-              <h2>{{product.title}}k</h2>
-              <p class="product-price">${{product.price}}</p>
-              <p>{{product.description}}</p>
-              <dl class="product-details">
-                  <dt>Fit:</dt>
-                  <dd>Perfect</dd>
-                  <dt>Length:</dt>
-                  <dd>Runs long</dd>
-                  <dt>Comfort:</dt>
-                  <dd>Comfortable</dd>
-                  <dt>Quality:</dt>
-                  <dd>Regular</dd>
-              </dl>
-              <div class="d-flex justify-content-between align-items-center">
-                  <div class="mt-3">
-                      <button class="btn btn-primary">Mua Ngay</button>
-                  </div>
-              </div>
-          </div>
-      </div>}
+@if(product){
+<div class="detailgroup w">
+  <div class="containerdetail">
+    <div class="book-image">
+      <img alt="Product Image" class="mb-5" [src]="product.image" width="400" />
+      @for (bid of product.bids; track bid) {
+      <p>
+        User: {{ bid.user.username }} - ${{ bid.price }}
+        - date:{{ bid.createdAt | date : "dd/MM/yyyy" }}
+      </p>
+      }
+    </div>
+    <div class="book-details">
+      <h1 class="mb-3">Product Detail</h1>
+      <h1>
+        {{ product.title }}
+      </h1>
+      <h2>
+        {{ product._id }}
+      </h2>
+      <div class="price">
+        <span class="original-price"> $29.99 </span>
+        ${{ product.price }}2`
+      </div>
+      <div class="stock">20 items left</div>
+      <div class="stock-bar">
+        <div></div>
+      </div>
+      <div class="description">
+        <strong>Description</strong>
+        <p>{{ product.description }}</p>
+      </div>
+      <div class="read-more mb-2">Đấu giá</div>
+      Thời gian còn lại: <countdown [config]="config" (event)="handleCountdownEvent($event)"/>
+      <form [formGroup]="bidForm" (ngSubmit)="handleSubmit()" >
+        <div class="quantity w-100">
+          <input type="number" placeholder="$0" formControlName="price" class="form-control" />
+          
+        </div>@if(price?.invalid && price?.touched) {
+            <div>
+              @if(price?.hasError('required')) {
+              <small  class="text-danger">
+                Bạn chưa nhập giá
+              </small>
+              } @if(price?.hasError('min')) {
+              <small  class="text-danger">
+                price phải > 0
+              </small>
+              }
+            </div>
+            }
+        <div class="max-purchase">bidPriceMax : {{ product.bidPriceMax }}</div>
+        <div class="buttons mt-2">
+          <button type="submit"  [disabled]="bidForm.invalid || bidForm.pristine" class="btn btn-success">Đấu giá</button>
+
+          <!-- <button class="add-to-cart">
+     <i class="fas fa-shopping-cart">
+     </i>
+     (pristine)
+     Add To Cart
+    </button> -->
+          <!-- <button class="wishlist">
+     <i class="fas fa-heart">
+     </i>
+     Wishlist
+    </button> -->
+        </div>
+      </form>
+    </div>
   </div>
 </div>
+}

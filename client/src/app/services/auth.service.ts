@@ -2,33 +2,12 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { jwtDecode } from 'jwt-decode';
 import { BehaviorSubject } from 'rxjs';
-
-export type RegisterFormType = {
-  username: string;
-  email: string;
-  password: string;
-};
-export type LoginFormType = {
-  email: string;
-  password: string;
-};
-export type User = {
-  username: string;
-  email: string;
-  password: string;
-  role: string;
-};
-
-export type LoginRes = {
-  accessToken: string;
-  user: User;
-};
+import { LoginFormType, LoginRes, RegisterFormType } from '../../types/User';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  // Theo dõi trạng thái đăng nhập
   private loggedInSubject = new BehaviorSubject<boolean>(
     !!localStorage.getItem('token')
   );
@@ -46,16 +25,17 @@ export class AuthService {
   setUsername(username: string | null) {
     if (username) {
       localStorage.setItem('username', username);
-      this.loggedInSubject.next(true); // Cập nhật trạng thái đăng nhập
+      this.loggedInSubject.next(true);
     } else {
       localStorage.removeItem('username');
-      this.loggedInSubject.next(false); // Người dùng đã đăng xuất
+      this.loggedInSubject.next(false);
     }
-    this.usernameSubject.next(username); // cập nhật username
+    this.usernameSubject.next(username);
   }
 
   logout() {
     localStorage.removeItem('token');
+    localStorage.removeItem('userId');
     this.setUsername(null);
   }
 
@@ -64,9 +44,9 @@ export class AuthService {
     if (!token) return null;
 
     try {
-      const decoded: any = jwtDecode(token); // Giải mã token
-      console.log('Decoded JWT:', decoded); // Log nội dung giải mã
-      return decoded.role; // Trả về vai trò
+      const decoded: any = jwtDecode(token); 
+      console.log('Decoded JWT:', decoded); 
+      return decoded.role; 
     } catch (error) {
       console.error('Failed to decode token:', error);
       return null;

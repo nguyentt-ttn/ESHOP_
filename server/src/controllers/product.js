@@ -1,5 +1,6 @@
 import Product from "../models/product"
-import { productValidate } from "../schemas/product"
+import User from "../models/auth"
+// import { productValidate } from "../schemas/product"
 
 export const getAllProduct = async(req,res)=>{
     const products = await Product.find()
@@ -7,34 +8,36 @@ export const getAllProduct = async(req,res)=>{
 }
 export const getProductById = async(req,res)=>{
     try {
-        const products = await Product.findById(req.params.id)
-        res.json(products)
+        const product = await Product.findById(req.params.id).populate({
+            path: "bids",
+            populate: {
+                path: "user",
+                model: User,
+                select: "email username",
+            },
+        })
+        if(!product) throw new Error( 404,"Product not found")
+        res.json(product)
     } catch (error) {
         console.log(error)
     }
 }
 export const createProduct = async(req,res)=>{
     try {
-        const {error} = productValidate.validate(req.body,{abortEarly:false})
-        if(error){
-            const errorMessage = error.details.map((message)=>message.message)
-            return res.json({message:errorMessage})
-        }
-        const data = await Product(req.body).save()
-        res.json(data)
+        const endAtTime = new Date(req.body.startAt).getTime() + req.body.bidTime * 60 * 1000
+
+        const data = await Product.create({...req.body,endAt:new Date(endAtTime)})
+        res.json({data, message:"Them thanh cong"})
     } catch (error) {
         console.log(error)
     }
 }
 export const updateProduct = async(req,res)=>{
     try {
-        const {error} = productValidate.validate(req.body,{abortEarly:false})
-        if(error){
-            const errorMessage = error.details.map((message)=>message.message)
-            return res.json({message:errorMessage})
-        }
-        const data = await Product.findByIdAndUpdate(req.params.id,req.body,{new:true})
-        res.json(data)
+        console.log(req.body)
+        const endAtTime = new Date(req.body.startAt).getTime() + req.body.bidTime * 60 * 1000
+        const data = await Product.findByIdAndUpdate(req.params.id, {...req.body, endAt:new Date(endAtTime)},{new:true})
+        res.status(200).json({data, message:"Cap nhap thanh cong"})
     } catch (error) {
         console.log(error)
     }

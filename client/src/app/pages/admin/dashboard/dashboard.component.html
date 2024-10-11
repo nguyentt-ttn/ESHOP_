@@ -1,29 +1,39 @@
 <div class="col dashboard-content">
     <div class="table-responsive">
-        <table class="table table-striped table-bordered">
-            <thead>
-                <tr>
-                    <th>Title</th>
-                    <th>Image</th>
-                    <th>Price</th>
-                    <th>Description</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                @for(product of products; track product._id) {
-                    <tr>
-                        <td>{{ product.title }}</td>
-                        <td><img [src]="product.image" alt="image product" style="width: 170px;"></td>
-                        <td>{{ product.price }}</td>
-                        <td>{{ product.description }}</td>
-                        <td>
-                            <button class="btn btn-danger" (click)="handleDeleteProduct(product._id)">Delete</button> | 
-                            <button class="btn btn-primary">Update</button>
-                        </td>
-                    </tr>
-                }
-            </tbody>
-        </table>
+      <h2>Quan ly san pham</h2>
+      <table class="table table-striped table-bordered">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Image</th>
+            <th>Price</th>
+            <!-- <th>Category</th> -->
+            <th>Description</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+           @for (product of products; track product._id) {
+          <tr >
+            <td>{{ product.title }}</td>
+            <td class="text-center">
+              <img [src]="product.image" alt="image product" style="width: 270px;">
+            </td>
+            <td>{{ product.price }}</td>
+            <!-- <td *ngFor="let category of categories; track category._id" [attr.value]="category._id">
+                {{ category.title }}
+            </td> -->
+            <td>{{ product.description }}</td>
+            <td >
+              <button class="btn btn-danger" (click)="handleDeleteProduct(product._id)">
+                Delete
+              </button> |
+              <a class="btn btn-primary" [routerLink]="['/admin/products/edit', product._id]">Update</a> |
+              <a class="btn btn-info" [routerLink]="['/admin/products', product._id, 'bids']" >Bid Info</a>
+            </td>
+          </tr>}
+        </tbody>
+      </table>
     </div>
-</div>
+  </div>
+  

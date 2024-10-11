@@ -28,6 +28,7 @@ export class LoginComponent {
       Validators.minLength(6),
     ]),
   });
+
   get email() {
     return this.loginForm.get('email');
   }
@@ -40,6 +41,7 @@ export class LoginComponent {
     this.authService.loginUser(this.loginForm.value).subscribe({
       next: (data) => {
         localStorage.setItem('token', data.accessToken);
+        localStorage.setItem('userId', data.user._id);
         this.authService.setUsername(data.user.username);
         this.router.navigateByUrl('/');
         this.toast.success('Login successfully');

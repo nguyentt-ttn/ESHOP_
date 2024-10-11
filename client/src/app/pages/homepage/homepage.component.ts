@@ -1,8 +1,9 @@
 import { CommonModule, NgFor } from '@angular/common';
 import { Component, inject } from '@angular/core';
-import { Product, ProductService } from '../../services/product.service';
+import { ProductService } from '../../services/product.service';
 import { HotToastService } from '@ngneat/hot-toast';
 import { RouterLink } from '@angular/router';
+import { Product } from '../../../types/Product';
 
 @Component({
   selector: 'app-homepage',
