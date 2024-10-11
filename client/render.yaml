@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: angular-app
+    env: node
+    buildCommand: npm run build
+    startCommand: npm start
+    rootDir: .  # Đảm bảo rằng nó trỏ đến đúng thư mục gốc của dự án

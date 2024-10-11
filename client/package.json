@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "serve -s dist/angular-fall24",
+    "start": "serve -s dist/angular-app",
     "server": "json-server db.json -m ./node_modules/json-server-auth",
     "build": "ng build --prod",
     "watch": "ng build --watch --configuration development",
@@ -26,6 +26,7 @@
     "ngx-countdown": "^18.0.0",
     "primeng": "^17.18.11",
     "rxjs": "~7.8.0",
+    "serve": "^14.2.3",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.2"
   },
